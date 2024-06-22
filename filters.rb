@@ -3,14 +3,34 @@
 
 def find(id)
     # Your code Here
+    if(candidate[:id] == id)
+      return @candidates
+    else
+      return nil
+    end
   end
   
   def experienced?(candidate)
     # Your code Here
+    if (candidate[:years_of_experience] >= 2)
+      return true
+    else
+      return false
+    end
   end
   
   def qualified_candidates(candidates)
     # Your code Here
+    if(candidate[:years_of_experience] >= 2 && candidate[:github_points] >= 100 && candidate[:languages].include?("Ruby") && candidate[:languages].include?("Python") && candidate[:date_applied] >= 15.days.ago.to_date && candidate[:age] > 17)
+      return true
+    else
+      return false
+    end
   end
   
   # More methods will go below
+
+  def ordered_by_qualifications(candidates)
+    # Your code Here
+    candidates.sort_by {|candidate| [candidate[:years_of_experience], candidate[:github_points]]}
+  end
